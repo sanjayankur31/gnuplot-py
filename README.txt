@@ -1,3 +1,7 @@
+This repository is a copy of the Gnuplot.py 1.8 source. The original readme is below:
+
+------------
+
 Gnuplot.py -- A pipe-based interface to the gnuplot plotting program.
 
 The Gnuplot.py home page is
