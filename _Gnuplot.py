@@ -12,12 +12,17 @@ interface to a running gnuplot process.
 
 """
 
-import sys, string, types
-
-import gp, PlotItems, termdefs, Errors
+import sys
+import string
+import types
+import gp
+import PlotItems
+import termdefs
+import Errors
 
 
 class _GnuplotFile:
+
     """A file to which gnuplot commands can be written.
 
     Sometimes it is convenient to write gnuplot commands to a command
@@ -44,7 +49,6 @@ class _GnuplotFile:
 
     def __init__(self, filename):
         """Open the file for writing."""
-
         self.gnuplot = open(filename, 'w')
         # forward write and flush methods:
         self.write = self.gnuplot.write
@@ -52,12 +56,12 @@ class _GnuplotFile:
 
     def __call__(self, s):
         """Write a command string to the file, followed by newline."""
-
         self.write(s + '\n')
         self.flush()
 
 
 class Gnuplot:
+
     """Interface to a gnuplot program.
 
     A Gnuplot represents a higher-level interface to a gnuplot
@@ -136,19 +140,19 @@ class Gnuplot:
     # parameter will be set using self.set_<type>(option, value),
     # where <type> is a string looked up in the following table.
     optiontypes = {
-        'title' : 'string',
-        'xlabel' : 'string',
-        'ylabel' : 'string',
-        'zlabel' : 'string',
-        'xrange' : 'range',
-        'yrange' : 'range',
-        'zrange' : 'range',
-        'trange' : 'range',
-        'urange' : 'range',
-        'vrange' : 'range',
-        'parametric' : 'boolean',
-        'polar' : 'boolean',
-        'output' : 'string',
+        'title': 'string',
+        'xlabel': 'string',
+        'ylabel': 'string',
+        'zlabel': 'string',
+        'xrange': 'range',
+        'yrange': 'range',
+        'zrange': 'range',
+        'trange': 'range',
+        'urange': 'range',
+        'vrange': 'range',
+        'parametric': 'boolean',
+        'polar': 'boolean',
+        'output': 'string',
         }
 
     def __init__(self, filename=None, persist=None, debug=0):
@@ -172,7 +176,6 @@ class Gnuplot:
               sending them to gnuplot.
 
         """
-
         if filename is None:
             self.gnuplot = gp.GnuplotProcess(persist=persist)
         else:
@@ -187,6 +190,7 @@ class Gnuplot:
         self('set terminal %s' % (gp.GnuplotOpts.default_term,))
 
     def close(self):
+        """Close down."""
         # This may cause a wait for the gnuplot process to finish
         # working, which is generally a good thing because it delays
         # the deletion of temporary files.
@@ -195,6 +199,7 @@ class Gnuplot:
             self.gnuplot = None
 
     def __del__(self):
+        """Clean up."""
         self.close()
         self._clear_queue()
 
@@ -206,7 +211,6 @@ class Gnuplot:
         for inline data) is through this method.
 
         """
-
         self.gnuplot(s)
         if self.debug:
             # also echo to stderr for user to see:
@@ -219,7 +223,6 @@ class Gnuplot:
         corresponding to the current itemlist.
 
         """
-
         plotcmds = []
         for item in self.itemlist:
             plotcmds.append(item.command())
@@ -231,7 +234,6 @@ class Gnuplot:
 
     def _clear_queue(self):
         """Clear the 'PlotItems' from the queue."""
-
         self.itemlist = []
 
     def _add_to_queue(self, items):
@@ -243,11 +245,10 @@ class Gnuplot:
         something that can be converted to a numpy array).
 
         """
-
         for item in items:
             if isinstance(item, PlotItems.PlotItem):
                 self.itemlist.append(item)
-            elif type(item) is types.StringType:
+            elif isinstance(item, str):
                 self.itemlist.append(PlotItems.Func(item))
             else:
                 # assume data is an array:
@@ -275,7 +276,6 @@ class Gnuplot:
             raised.
 
         """
-
         if keyw:
             self.set(**keyw)
 
@@ -307,7 +307,6 @@ class Gnuplot:
             exception is raised.
 
         """
-
         if keyw:
             self.set(**keyw)
 
@@ -325,7 +324,6 @@ class Gnuplot:
         the same graph.  See 'plot' for details.
 
         """
-
         if keyw:
             self.set(**keyw)
 
@@ -339,7 +337,6 @@ class Gnuplot:
         gnuplot.  End by typing C-d.
 
         """
-
         import time
         if sys.platform == 'win32':
             sys.stderr.write('Press Ctrl-z twice to end interactive input\n')
@@ -352,33 +349,28 @@ class Gnuplot:
             except EOFError:
                 break
             self(line)
-            time.sleep(0.2) # give a little time for errors to be written
+            time.sleep(0.2)  # give a little time for errors to be written
         sys.stderr.write('\n')
 
     def clear(self):
         """Clear the plot window (without affecting the current itemlist)."""
-
         self('clear')
 
     def reset(self):
         """Reset all gnuplot settings to their defaults and clear itemlist."""
-
         self('reset')
         self.itemlist = []
 
     def load(self, filename):
         """Load a file using gnuplot's 'load' command."""
-
         self("load '%s'" % (filename,))
 
     def save(self, filename):
         """Save the current plot commands using gnuplot's 'save' command."""
-
         self("save '%s'" % (filename,))
 
     def set_string(self, option, s=None):
         """Set a string option, or if s is omitted, unset the option."""
-
         if s is None:
             self('set %s' % (option,))
         else:
@@ -396,7 +388,6 @@ class Gnuplot:
         'Helvetica,14' for 14 point Helvetica.
 
         """
-
         cmd = ['set', option]
         if s is not None:
             cmd.append('"%s"' % (s,))
@@ -410,10 +401,12 @@ class Gnuplot:
         self(string.join(cmd))
 
     def set_boolean(self, option, value):
-        """Set an on/off option.  It is assumed that the way to turn
-        the option on is to type `set <option>' and to turn it off,
-        `set no<option>'."""
+        """Set an on/off option.
 
+        It is assumed that the way to turn
+        the option on is to type `set <option>' and to turn it off,
+        `set no<option>'.
+        """
         if value:
             self('set %s' % option)
         else:
@@ -421,19 +414,20 @@ class Gnuplot:
 
     def set_range(self, option, value):
         """Set a range option (xrange, yrange, trange, urange, etc.).
+
         The value can be a string (which is passed as-is, without
         quotes) or a tuple (minrange,maxrange) of numbers or string
         expressions recognized by gnuplot.  If either range is None
         then that range is passed as `*' (which means to
-        autoscale)."""
-
+        autoscale).
+        """
         if value is None:
             self('set %s [*:*]' % (option,))
-        elif type(value) is types.StringType:
+        elif isinstance(value, str):
             self('set %s %s' % (option, value,))
         else:
             # Must be a tuple:
-            (minrange,maxrange) = value
+            (minrange, maxrange) = value
             if minrange is None:
                 minrange = '*'
             if maxrange is None:
@@ -441,11 +435,12 @@ class Gnuplot:
             self('set %s [%s:%s]' % (option, minrange, maxrange,))
 
     def set(self, **keyw):
-        """Set one or more settings at once from keyword arguments.
-        The allowed settings and their treatments are determined from
-        the optiontypes mapping."""
+        """ Set one or more settings at once from keyword arguments.
 
-        for (k,v) in keyw.items():
+        The allowed settings and their treatments are determined from
+        the optiontypes mapping.
+        """
+        for (k, v) in keyw.items():
             try:
                 type = self.optiontypes[k]
             except KeyError:
@@ -454,22 +449,18 @@ class Gnuplot:
 
     def xlabel(self, s=None, offset=None, font=None):
         """Set the plot's xlabel."""
-
         self.set_label('xlabel', s, offset=offset, font=font)
 
     def ylabel(self, s=None, offset=None, font=None):
         """Set the plot's ylabel."""
-
         self.set_label('ylabel', s, offset=offset, font=font)
 
     def zlabel(self, s=None, offset=None, font=None):
         """Set the plot's zlabel."""
-
         self.set_label('zlabel', s, offset=offset, font=font)
 
     def title(self, s=None, offset=None, font=None):
         """Set the plot's title."""
-
         self.set_label('title', s, offset=offset, font=font)
 
     def hardcopy(self, filename=None, terminal='postscript', **keyw):
@@ -540,7 +531,6 @@ class Gnuplot:
         might cause the temporary files to be deleted.
 
         """
-
         if filename is None:
             if gp.GnuplotOpts.default_lpr is None:
                 raise Errors.OptionError(
@@ -581,5 +571,3 @@ class Gnuplot:
         # reset the terminal to its `default' setting:
         self('set terminal %s' % gp.GnuplotOpts.default_term)
         self.set_string('output')
-
-
