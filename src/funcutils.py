@@ -15,8 +15,8 @@ points and tabulate the output to be used with Gnuplot.
 """
 
 import numpy
-
-import Gnuplot, utils
+import utils
+import Gnuplot
 
 
 def tabulate_function(f, xvals, yvals=None, dtype=None, ufunc=0):

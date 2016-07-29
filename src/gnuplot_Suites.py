@@ -12,34 +12,40 @@
 #  class Standard_Suite
 #  class Miscellaneous_Events
 #
-"""Suite gnuplot Suite: Events supplied by gnuplot
-Level 1, version 1
-
-Generated from Alpha:Desktop Folder:gnuplot.1:gnuplot 3.7.1a
-AETE/AEUT resource version 1/0, language 0, script 0
-"""
 
 import aetools
 import MacOS
 
+
 _code = 'GPSE'
+
 
 class gnuplot_Suite:
 
+    """Suite gnuplot Suite: Events supplied by gnuplot.
+
+    Level 1, version 1
+
+    Generated from Alpha:Desktop Folder:gnuplot.1:gnuplot 3.7.1a
+    AETE/AEUT resource version 1/0, language 0, script 0
+    """
+
     def gnuexec(self, _object=None, _attributes={}, **_arguments):
-        """exec: execute a gnuplot command
+        """Execute a gnuplot command.
+
+        exec: execute a gnuplot command
         Required argument: gnuplot command
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'GPSE'
         _subcode = 'exec'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
-
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -47,7 +53,7 @@ class gnuplot_Suite:
             return _arguments['----']
 
     def plot(self, _object=None, _attributes={}, **_arguments):
-        """plot: create a 2-D plot
+        """plot: create a 2-D plot.
 
 
         Required argument: data to be plotted
@@ -56,12 +62,12 @@ class gnuplot_Suite:
         _code = 'GPLT'
         _subcode = 'plot'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
-
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -69,19 +75,21 @@ class gnuplot_Suite:
             return _arguments['----']
 
     def splot(self, _object=None, _attributes={}, **_arguments):
-        """splot: create a 3-D plot
+        """splot: create a 3-D plot.
+
         Required argument: data to be plotted
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'GPLT'
         _subcode = 'splt'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -90,33 +98,39 @@ class gnuplot_Suite:
 
 
 class graph(aetools.ComponentItem):
-    """graph - graph - a subclass of window"""
+
+    """graph - graph - a subclass of window."""
+
     want = 'cGRF'
+
+
 class picture(aetools.NProperty):
-    """picture - gnuplot graph in "PICT" format"""
+
+    """picture - gnuplot graph in "PICT" format."""
+
     which = 'PICT'
     want = 'PICT'
 graph._propdict = {
-    'picture' : picture,
+    'picture': picture,
 }
 graph._elemdict = {
 }
 _Enum_lyty = {
-    'line' : 'typ1',    # line
-    'points' : 'typ2',  # points
-    'impulses' : 'typ3',    # impulses
-    'linespoints' : 'typ4', # linespoints
-    'dots' : 'typ5',    # dots
-    'steps' : 'typ6',   # steps
-    'fsteps' : 'typ7',  # fsteps
-    'errorbars' : 'typ8',   # errorbars
-    'xerrorbars' : 'typ9',  # xerrorbars
-    'yerrorbars' : 'ty10',  # yerrorbars
-    'xyerrorbars' : 'ty11', # xyerrorbars
-    'boxes' : 'ty12',   # boxes
-    'boxerrorbars' : 'ty13',    # boxerrorbars
-    'boxxyerrorbars' : 'ty14',  # boxxyerrorbars
-    'vector' : 'ty19',  # vector
+    'line': 'typ1',    # line
+    'points': 'typ2',  # points
+    'impulses': 'typ3',    # impulses
+    'linespoints': 'typ4',  # linespoints
+    'dots': 'typ5',    # dots
+    'steps': 'typ6',   # steps
+    'fsteps': 'typ7',  # fsteps
+    'errorbars': 'typ8',   # errorbars
+    'xerrorbars': 'typ9',  # xerrorbars
+    'yerrorbars': 'ty10',  # yerrorbars
+    'xyerrorbars': 'ty11',  # xyerrorbars
+    'boxes': 'ty12',   # boxes
+    'boxerrorbars': 'ty13',    # boxerrorbars
+    'boxxyerrorbars': 'ty14',  # boxxyerrorbars
+    'vector': 'ty19',  # vector
 }
 
 
@@ -124,23 +138,23 @@ _Enum_lyty = {
 # Indices of types declared in this module
 #
 _classdeclarations = {
-    'cGRF' : graph,
+    'cGRF': graph,
 }
 
 _propdeclarations = {
-    'PICT' : picture,
+    'PICT': picture,
 }
 
 _compdeclarations = {
 }
 
 _enumdeclarations = {
-    'lyty' : _Enum_lyty,
+    'lyty': _Enum_lyty,
 }
 
 
-"""Suite odds and ends: Things that should be in some standard suite, but aren’t
-Level 1, version 1
+"""Suite odds and ends: Things that should be in some standard suite, but are
+not Level 1, version 1
 
 Generated from Alpha:Desktop Folder:gnuplot.1:gnuplot 3.7.1a
 AETE/AEUT resource version 1/0, language 0, script 0
@@ -151,22 +165,27 @@ import MacOS
 
 _code = 'Odds'
 
+
 class odds_and_ends:
 
+    """Other stuff."""
+
     def select(self, _object=None, _attributes={}, **_arguments):
-        """select: Select the specified object
+        """select: Select the specified object.
+
         Required argument: the object to select
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'misc'
         _subcode = 'slct'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -204,12 +223,13 @@ _code = 'CoRe'
 class Standard_Suite:
 
     _argmap_close = {
-        'saving' : 'savo',
-        '_in' : 'kfil',
+        'saving': 'savo',
+        '_in': 'kfil',
     }
 
     def close(self, _object, _attributes={}, **_arguments):
-        """close: Close an object
+        """close: Close an object.
+
         Required argument: the objects to close
         Keyword argument saving: specifies whether or not changes should be saved before closing
         Keyword argument _in: the file in which to save the object
@@ -224,7 +244,7 @@ class Standard_Suite:
         aetools.enumsubst(_arguments, 'savo', _Enum_savo)
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -232,7 +252,8 @@ class Standard_Suite:
             return _arguments['----']
 
     def data_size(self, _object, _attributes={}, **_arguments):
-        """data size: Return the size in bytes of an object
+        """data size: Return the size in bytes of an object.
+
         Required argument: the object whose data size is to be returned
         Keyword argument _attributes: AppleEvent attribute dictionary
         Returns: the size of the object in bytes
@@ -240,12 +261,13 @@ class Standard_Suite:
         _code = 'core'
         _subcode = 'dsiz'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -253,7 +275,8 @@ class Standard_Suite:
             return _arguments['----']
 
     def get(self, _object, _attributes={}, **_arguments):
-        """get: Get the data for an object
+        """get: Get the data for an object.
+
         Required argument: the object whose data is to be returned
         Keyword argument _attributes: AppleEvent attribute dictionary
         Returns: The data from the object
@@ -261,12 +284,13 @@ class Standard_Suite:
         _code = 'core'
         _subcode = 'getd'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -274,14 +298,15 @@ class Standard_Suite:
             return _arguments['----']
 
     _argmap_make = {
-        'new' : 'kocl',
-        'at' : 'insh',
-        'with_data' : 'data',
-        'with_properties' : 'prdt',
+        'new': 'kocl',
+        'at': 'insh',
+        'with_data': 'data',
+        'with_properties': 'prdt',
     }
 
     def make(self, _no_object=None, _attributes={}, **_arguments):
-        """make: Make a new element
+        """make: Make a new element.
+
         Keyword argument new: the class of the new element
         Keyword argument at: the location at which to insert the element
         Keyword argument with_data: the initial data for the element
@@ -293,11 +318,12 @@ class Standard_Suite:
         _subcode = 'crel'
 
         aetools.keysubst(_arguments, self._argmap_make)
-        if _no_object != None: raise TypeError, 'No direct arg expected'
+        if _no_object != None:
+            raise TypeError, 'No direct arg expected'
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -305,19 +331,20 @@ class Standard_Suite:
             return _arguments['----']
 
     def open(self, _object, _attributes={}, **_arguments):
-        """open: Open the specified object(s)
+        """open: Open the specified object(s).
+
         Required argument: Objects to open. Can be a list of files or an object specifier.
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'aevt'
         _subcode = 'odoc'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
-
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -325,19 +352,20 @@ class Standard_Suite:
             return _arguments['----']
 
     def _print(self, _object, _attributes={}, **_arguments):
-        """print: Print the specified object(s)
+        """print: Print the specified object(s).
+
         Required argument: Objects to print. Can be a list of files or an object specifier.
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'aevt'
         _subcode = 'pdoc'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError, 'No optional args expected'
         _arguments['----'] = _object
 
-
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -345,12 +373,13 @@ class Standard_Suite:
             return _arguments['----']
 
     _argmap_save = {
-        '_in' : 'kfil',
-        'as' : 'fltp',
+        '_in': 'kfil',
+        'as': 'fltp',
     }
 
     def save(self, _object, _attributes={}, **_arguments):
-        """save: save a set of objects
+        """save: save a set of objects.
+
         Required argument: Objects to save.
         Keyword argument _in: the file in which to save the object(s)
         Keyword argument as: the file type of the document in which to save the data
@@ -364,7 +393,7 @@ class Standard_Suite:
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
-                _arguments, _attributes)
+                                                    _arguments, _attributes)
         if _arguments.has_key('errn'):
             raise aetools.Error, aetools.decodeerror(_arguments)
         # XXXX Optionally decode result
@@ -372,11 +401,12 @@ class Standard_Suite:
             return _arguments['----']
 
     _argmap_set = {
-        'to' : 'data',
+        'to': 'data',
     }
 
     def set(self, _object, _attributes={}, **_arguments):
-        """set: Set an object’s data
+        """set: Set an objects data.
+
         Required argument: the object to change
         Keyword argument to: the new value
         Keyword argument _attributes: AppleEvent attribute dictionary
@@ -398,16 +428,16 @@ class Standard_Suite:
 
 
 class application(aetools.ComponentItem):
-    """application - An application program"""
+    """application - An application program."""
     want = 'capp'
 #        element 'cwin' as ['indx', 'name', 'rele']
 #        element 'docu' as ['name']
 
 class window(aetools.ComponentItem):
-    """window - A Window"""
+    """window - A Window."""
     want = 'cwin'
 class bounds(aetools.NProperty):
-    """bounds - the boundary rectangle for the window"""
+    """bounds - the boundary rectangle for the window."""
     which = 'pbnd'
     want = 'qdrt'
 class closeable(aetools.NProperty):
@@ -530,7 +560,7 @@ _enumdeclarations = {
     'savo' : _Enum_savo,
 }
 
-"""Suite Miscellaneous Events: Useful events that aren’t in any other suite
+"""Suite Miscellaneous Events: Useful events that aren't in any other suite
 Level 1, version 1
 
 Generated from Alpha:Desktop Folder:gnuplot.1:gnuplot 3.7.1a
@@ -566,7 +596,7 @@ class Miscellaneous_Events:
 
     def do_script(self, _object=None, _attributes={}, **_arguments):
         """do script: execute a gnuplot script
-        Required argument: a gnuplot script 
+        Required argument: a gnuplot script
         Keyword argument _attributes: AppleEvent attribute dictionary
         """
         _code = 'misc'

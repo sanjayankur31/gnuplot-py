@@ -17,6 +17,7 @@ particularly gnuplot-related.
 import string
 import numpy
 
+
 def float_array(m):
     """Return the argument as a numpy array of type at least 'Float32'.
 
@@ -27,7 +28,6 @@ def float_array(m):
     downcasting to single-precision float.
 
     """
-
     try:
         # Try Float32 (this will refuse to downcast)
         return numpy.asarray(m, numpy.float32)
@@ -40,13 +40,14 @@ def float_array(m):
             return numpy.asarray(m, numpy.float_)
         except TypeError:
             # TBD: Need better handling of this error!
-            print "Fatal: array dimensions not equal!"
+            print("Fatal: array dimensions not equal!")
             return None
+
 
 def write_array(f, set,
                 item_sep=' ',
                 nest_prefix='', nest_suffix='\n', nest_sep=''):
-    """Write an array of arbitrary dimension to a file.
+    r"""Write an array of arbitrary dimension to a file.
 
     A general recursive array writer.  The last four parameters allow
     a great deal of freedom in choosing the output format of the
@@ -70,7 +71,6 @@ def write_array(f, set,
         set[1,1,0] set[1,1,1] ...
 
     """
-
     if len(set.shape) == 1:
         (columns,) = set.shape
         assert columns > 0
@@ -103,5 +103,3 @@ def write_array(f, set,
             write_array(f, subset,
                         item_sep, nest_prefix, nest_suffix, nest_sep)
         f.write(nest_suffix)
-
-
