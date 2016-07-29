@@ -1,18 +1,15 @@
 Gnuplot.py
 -----------
-A pipe-based interface to the gnuplot plotting program. This repository is a
-copy of the Gnuplot.py 1.8 source. The original readme is below:
+A pipe-based interface to the gnuplot plotting program. 
 
-The Gnuplot.py home page is
+Note: This repository is a copy of the Gnuplot.py 1.8 source. The original readme is below:
 
-    http://gnuplot-py.sourceforge.net
+The Gnuplot.py home page is http://gnuplot-py.sourceforge.net
 
 There you can get the latest version, view the documentation, or
 report bugs.  There is also a mailing list for Gnuplot.py users.  You
 can subscribe to the mailing list or view the archive of old articles
-at
-
-    http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
+at http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
 
 
 Documentation
@@ -36,17 +33,11 @@ python files in an editor.
 
 Finally, there is a new mailing list for Gnuplot.py users.  For more
 information about subscribing to the list or viewing the archive of
-old articles, please go to
-
-     http://lists.sourceforge.net/lists/listinfo/gnuplot-py-users
+old articles, please go to http://lists.sourceforge.net/lists/listinfo/gnuplot-py-users
 
 To get good use out of Gnuplot.py, you will want to know something
 about gnuplot, for which a good source is the gnuplot help (run
-gnuplot then type `help', or read it online at
-
-    http://www.gnuplot.info/gnuplot.html
-
-).
+gnuplot then type `help`, or read it online at http://www.gnuplot.info/gnuplot.html ).
 
 For a relatively thorough test of Gnuplot.py, type `python test.py`
 which goes systematically through most Gnuplot.py features.
@@ -66,13 +57,13 @@ Quick instructions:
 
 More information:
 
-Obviously, you must have the gnuplot program if Gnuplot.py is to be of
-any use to you.  Gnuplot can be obtained via
-<http://www.gnuplot.info>.  You also need a copy of the numpy package, which
-is available from the Scipy group at <http://www.scipy.org/Download>.
+Obviously, you must have the gnuplot program if Gnuplot.py is to be of any use
+to you.  Gnuplot can be obtained via http://www.gnuplot.info.  You also need a
+copy of the numpy package, which is available from the Scipy group at
+http://www.scipy.org/Download.
 
 Gnuplot.py uses Python distutils
-<http://www.python.org/doc/current/inst/inst.html> and can be
+http://www.python.org/doc/current/inst/inst.html and can be
 installed by untarring the package, changing into the top-level
 directory, and typing "python setup.py install".  The Gnuplot.py
 package is pure Python--no compilation is necessary.
@@ -110,9 +101,13 @@ from the source distribution then install the RPM:
 
 2. Create the RPM:
 
+.. code:: bash
+
    $ python ./setup.py bdist --format=rpm
 
 3. Install it (as root):
+
+.. code:: bash
 
    # rpm -ivh dist/gnuplot-py-1.7-1.noarch.rpm
 
@@ -133,7 +128,7 @@ pgnuplot.exe is installed.  It comes with gnuplot since at least
 version 3.7.1.  Alternatively you can get pgnuplot.exe alone by
 downloading `testing/windows-stdin.zip` from one of the gnuplot
 archives (e.g.,
-<ftp://ftp.gnuplot.info/pub/gnuplot/testing/windows-stdin.zip>).
+ftp://ftp.gnuplot.info/pub/gnuplot/testing/windows-stdin.zip).
 
 Continue installing Gnuplot.py by following the instructions in the
 previous section.
@@ -165,16 +160,12 @@ the following sources for help:
 1. Read the documentation!  For simple questions, start with the
    Gnuplot.html, README.txt, and FAQ.txt files in the distribution.
    For more detailed information, check the online class documentation
-   at
-
-       http://gnuplot-py.sourceforge.net/doc/
+   at http://gnuplot-py.sourceforge.net/doc/
 
 2. Check the mailing list archives.  Chances are that somebody has
    already asked a similar questions and you are one quick search away
    from the answer.  Information about the mailing list is available
-   at
-
-       http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
+   at http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
 
 3. Ask your question on the mailing list.  I am trying to move most
    email traffic about Gnuplot.py to the mailing list, partly because
@@ -192,12 +183,10 @@ I would love to have feedback from people letting me know whether they
 find Gnuplot.py useful.  And certainly let me know about any problems,
 suggestions, or enhancements.  For most purposes, please send your
 emails to the Gnuplot.py users mailing list:
-
-    gnuplot-py-users@lists.sourceforge.net
+gnuplot-py-users@lists.sourceforge.net
 
 Information about the mailing list can be obtained at
-
-    http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
+http://lists.sourceforge.net/mailman/listinfo/gnuplot-py-users
 
 
 Compatibility
@@ -221,7 +210,7 @@ test them myself.
 License
 -------
 
-See the file LICENSE.txt for license info.  In brief, Gnuplot is LGPL.
+See the file LICENSE for license info.  In brief, Gnuplot is LGPL.
 
 
 Credits
