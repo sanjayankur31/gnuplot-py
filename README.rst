@@ -1,8 +1,7 @@
-This repository is a copy of the Gnuplot.py 1.8 source. The original readme is below:
-
-------------
-
-Gnuplot.py -- A pipe-based interface to the gnuplot plotting program.
+Gnuplot.py
+-----------
+A pipe-based interface to the gnuplot plotting program. This repository is a
+copy of the Gnuplot.py 1.8 source. The original readme is below:
 
 The Gnuplot.py home page is
 
@@ -20,7 +19,7 @@ Documentation
 -------------
 
 The quickest way to learn how to use Gnuplot.py is to install it and
-run the simple demonstration by typing `python demo.py', then look at
+run the simple demonstration by typing `python demo.py`, then look at
 the demo.py file to see the commands that created the demo.  One of
 the examples is probably similar to what you want to do.
 
@@ -49,7 +48,7 @@ gnuplot then type `help', or read it online at
 
 ).
 
-For a relatively thorough test of Gnuplot.py, type `python test.py'
+For a relatively thorough test of Gnuplot.py, type `python test.py`
 which goes systematically through most Gnuplot.py features.
 
 
@@ -79,7 +78,7 @@ directory, and typing "python setup.py install".  The Gnuplot.py
 package is pure Python--no compilation is necessary.
 
 Gnuplot.py is structured as a python package.  That means that it
-installs itself as a subdirectory called `Gnuplot' under a directory
+installs itself as a subdirectory called `Gnuplot` under a directory
 of your python path (usually site-packages).  If you don't want to use
 distutils you can just move the main Gnuplot.py directory there and
 rename it to "Gnuplot".
@@ -94,7 +93,7 @@ values are already chosen, so it is quite possible that you don't have
 to change anything.
 
 Import the main part of the package into your python programs using
-`import Gnuplot'.  Some other features can be found in the modules
+`import Gnuplot`.  Some other features can be found in the modules
 Gnuplot.funcutils and Gnuplot.PlotItems.
 
 
@@ -128,11 +127,11 @@ suggestions having to do with Windows would be especially appreciated.
 Because the main MS-Windows gnuplot executable (wgnuplot.exe) doesn't
 accept commands on standard input, Gnuplot.py cannot communicate with
 it directly.  However, there is a simple little program called
-`pgnuplot.exe' that accepts commands on stdin and passes them to
+`pgnuplot.exe` that accepts commands on stdin and passes them to
 wgnuplot.  So to run Gnuplot.py on Windows, you need to make sure that
 pgnuplot.exe is installed.  It comes with gnuplot since at least
 version 3.7.1.  Alternatively you can get pgnuplot.exe alone by
-downloading `testing/windows-stdin.zip' from one of the gnuplot
+downloading `testing/windows-stdin.zip` from one of the gnuplot
 archives (e.g.,
 <ftp://ftp.gnuplot.info/pub/gnuplot/testing/windows-stdin.zip>).
 
